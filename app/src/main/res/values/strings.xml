@@ -1,0 +1,28 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name" tools:ignore="PrivateResource">Nicer</string>
+
+    <string name="welcome_to_nicer">Welcome to Nicer</string>
+    <string name="nicer_tagline">Nicer way to hide images</string>
+    <string name="nicer_image_locker">Nicer Image Locker</string>
+    <string name="pick_single">Please select your image</string>
+
+    <!-- Menu Items -->
+    <string name="action_nicer_lock">Nicer Lock</string>
+    <string name="action_camera">Camera</string>
+
+    <!-- Delete Dialog -->
+    <string name="delete_title">Delete Photo</string>
+    <string name="delete_message">Are you sure you want to delete the photo?</string>
+
+    <!-- Image Picker -->
+    <plurals name="pick_multi">
+        <item quantity="zero">No image selected</item>
+        <item quantity="one">One image selected</item>
+        <item quantity="other">%1$d images selected</item>
+    </plurals>
+    <plurals name="pick_multi_more">
+        <item quantity="one">Please select one more image…</item>
+        <item quantity="other">Please select %1$d more images…</item>
+    </plurals>
+    <string name="pick_multi_limit">You have more than %1$d images selected…</string>
+</resources>
