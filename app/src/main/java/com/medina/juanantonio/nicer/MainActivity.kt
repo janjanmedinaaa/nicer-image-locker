@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.WindowManager.LayoutParams.FLAG_SECURE
-import androidx.appcompat.app.AlertDialog
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
@@ -20,6 +20,7 @@ import com.medina.juanantonio.nicer.databinding.ActivityMainBinding
 import com.medina.juanantonio.nicer.managers.FileEncryptionManager
 import com.medina.juanantonio.nicer.managers.FileManager
 import com.medina.juanantonio.nicer.managers.SharedPrefsManager
+import com.yarolegovich.lovelydialog.LovelyStandardDialog
 import java.io.File
 
 class MainActivity : AppCompatActivity(), BottomSheetImagePicker.OnImagesSelectedListener,
@@ -130,6 +131,14 @@ class MainActivity : AppCompatActivity(), BottomSheetImagePicker.OnImagesSelecte
                 onBackPressed()
                 true
             }
+            R.id.action_settings -> {
+                Toast.makeText(
+                    this,
+                    getString(R.string.not_yet_ready),
+                    Toast.LENGTH_SHORT
+                ).show()
+                true
+            }
             else -> {
                 super.onOptionsItemSelected(item)
             }
@@ -148,10 +157,12 @@ class MainActivity : AppCompatActivity(), BottomSheetImagePicker.OnImagesSelecte
     }
 
     override fun onImageLongClicked(path: String, position: Int) {
-        AlertDialog.Builder(this)
+        LovelyStandardDialog(this, LovelyStandardDialog.ButtonLayout.HORIZONTAL)
+            .setTopColorRes(R.color.deleteBackgroundColor)
+            .setIcon(R.drawable.ic_delete)
             .setTitle(R.string.delete_title)
             .setMessage(R.string.delete_message)
-            .setPositiveButton(android.R.string.yes) { _, _ ->
+            .setPositiveButton(android.R.string.yes) {
                 File(path).delete()
                 imageGalleryAdapter.removeImage(position)
             }

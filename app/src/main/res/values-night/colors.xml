@@ -7,4 +7,6 @@
     <color name="backgroundColor">#000000</color>
 
     <color name="backButtonColor">#FFFFFF</color>
+
+    <color name="deleteBackgroundColor">#933030</color>
 </resources>

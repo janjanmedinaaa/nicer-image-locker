@@ -6,12 +6,9 @@ object Constants {
         const val IMAGE = "IMAGE"
     }
 
-    object PATTERN {
-        const val LETTER_B = "63012487"
-    }
-
     object SharedPreferences {
         const val SECRET_KEY = "SECRET_KEY"
+        const val PATTERN_LOCK = "PATTERN_LOCK"
     }
 
     object DIRECTORY {

@@ -3,7 +3,9 @@ package com.medina.juanantonio.nicer.managers
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
+import com.medina.juanantonio.nicer.common.Constants.SharedPreferences.PATTERN_LOCK
 import com.medina.juanantonio.nicer.common.Constants.SharedPreferences.SECRET_KEY
+import com.medina.juanantonio.nicer.common.extensions.md5Encrypt
 import javax.crypto.SecretKey
 
 @SuppressLint("CommitPrefEdits")
@@ -38,5 +40,11 @@ class SharedPrefsManager(
         }
 
         return key.toSecretKey()
+    }
+
+    fun getPatternLock(): String? = sharedPrefs.getString(PATTERN_LOCK, null)
+
+    fun setPatternLock(pattern: String) {
+        editor.putString(PATTERN_LOCK, pattern.md5Encrypt()).apply()
     }
 }

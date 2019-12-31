@@ -1,14 +1,25 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name" tools:ignore="PrivateResource">Nicer</string>
 
+    <string name="not_yet_ready">Not yet ready.</string>
+
     <string name="welcome_to_nicer">Welcome to Nicer</string>
     <string name="nicer_tagline">Nicer way to hide images</string>
     <string name="nicer_image_locker">Nicer Image Locker</string>
-    <string name="pick_single">Please select your image</string>
+
+    <!-- Password Lock Title -->
+    <string name="enter_password">Enter Password</string>
+    <string name="set_password">Set Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    
+    <!-- Password Lock Error Messages -->
+    <string name="password_invalid">Password Incorrect. Try again later.</string>
+    <string name="password_not_match">Password does not match. Try again later.</string>
 
     <!-- Menu Items -->
     <string name="action_nicer_lock">Nicer Lock</string>
     <string name="action_camera">Camera</string>
+    <string name="action_settings">Settings</string>
 
     <!-- Delete Dialog -->
     <string name="delete_title">Delete Photo</string>
@@ -21,8 +32,8 @@
         <item quantity="other">%1$d images selected</item>
     </plurals>
     <plurals name="pick_multi_more">
-        <item quantity="one">Please select one more image…</item>
-        <item quantity="other">Please select %1$d more images…</item>
+        <item quantity="one">Please select an image</item>
+        <item quantity="other">Please select %1$d more images</item>
     </plurals>
-    <string name="pick_multi_limit">You have more than %1$d images selected…</string>
+    <string name="pick_multi_limit">You have more than %1$d images selected</string>
 </resources>

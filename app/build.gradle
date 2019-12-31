@@ -46,6 +46,9 @@ dependencies {
     // Lock Screen
     implementation 'com.github.janjanmedinaaa.PatternLockView:patternlockview:-SNAPSHOT'
 
+    // Lovely Dialog
+    implementation 'com.yarolegovich:lovely-dialog:1.1.0'
+
     testImplementation 'junit:junit:4.12'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
