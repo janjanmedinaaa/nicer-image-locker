@@ -1,9 +1,10 @@
 package com.medina.juanantonio.nicer.managers
 
 import android.annotation.SuppressLint
-import com.medina.juanantonio.nicer.common.Constants.ENCRYPTION.ALGORITHM
-import com.medina.juanantonio.nicer.common.Constants.ENCRYPTION.PROVIDER
-import com.medina.juanantonio.nicer.common.Constants.ENCRYPTION.TRANSFORMATION
+import android.util.Base64
+import com.medina.juanantonio.nicer.managers.EncryptionManager.ENCRYPTION.ALGORITHM
+import com.medina.juanantonio.nicer.managers.EncryptionManager.ENCRYPTION.PROVIDER
+import com.medina.juanantonio.nicer.managers.EncryptionManager.ENCRYPTION.TRANSFORMATION
 import java.io.File
 import java.io.BufferedInputStream
 import java.io.FileInputStream
@@ -20,6 +21,12 @@ import javax.crypto.spec.SecretKeySpec
 
 class EncryptionManager {
     lateinit var secretKey: SecretKey
+
+    object ENCRYPTION {
+        const val ALGORITHM = "AES"
+        const val TRANSFORMATION = "AES"
+        const val PROVIDER = "BC"
+    }
 
     @Throws(Exception::class)
     fun generateSecretKey(): SecretKey? {
@@ -80,4 +87,16 @@ class EncryptionManager {
     fun decryptFile(file: File): ByteArray {
         return decrypt(readFile(file))
     }
+}
+
+fun SecretKey.toEncodedString(): String = Base64.encodeToString(encoded, Base64.NO_WRAP)
+
+fun String?.toSecretKey(): SecretKey {
+    val decodedKey = Base64.decode(this, Base64.NO_WRAP)
+    return SecretKeySpec(
+        decodedKey,
+        0,
+        decodedKey.size,
+        ALGORITHM
+    )
 }

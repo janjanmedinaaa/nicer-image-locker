@@ -18,12 +18,6 @@ object Constants {
         const val HIDDEN_DIRECTORY = "images"
     }
 
-    object ENCRYPTION {
-        const val ALGORITHM = "AES"
-        const val TRANSFORMATION = "AES"
-        const val PROVIDER = "BC"
-    }
-
     object DATE {
         const val FILE_NAME_FORMAT = "yyyyMMdd_HHmmss"
     }
