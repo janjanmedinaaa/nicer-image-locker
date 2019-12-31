@@ -17,7 +17,7 @@ import com.medina.juanantonio.nicer.adapters.ImageGalleryAdapter
 import com.medina.juanantonio.nicer.common.Constants.DIRECTORY.HIDDEN_DIRECTORY
 import com.medina.juanantonio.nicer.common.Constants.INTENTS.IMAGE
 import com.medina.juanantonio.nicer.databinding.ActivityMainBinding
-import com.medina.juanantonio.nicer.managers.EncryptionManager
+import com.medina.juanantonio.nicer.managers.FileEncryptionManager
 import com.medina.juanantonio.nicer.managers.FileManager
 import com.medina.juanantonio.nicer.managers.SharedPrefsManager
 import java.io.File
@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), BottomSheetImagePicker.OnImagesSelecte
     private lateinit var sharedPrefsManager: SharedPrefsManager
 
     private lateinit var fileManager: FileManager
-    private val encryptionManager = EncryptionManager()
+    private val fileEncryptionManager = FileEncryptionManager()
 
     private var startActivity = false
 
@@ -48,12 +48,12 @@ class MainActivity : AppCompatActivity(), BottomSheetImagePicker.OnImagesSelecte
         setSupportActionBar(binding.toolbar)
         setTitle(R.string.nicer_image_locker)
 
-        fileManager = FileManager(this, encryptionManager)
+        fileManager = FileManager(this, fileEncryptionManager)
         fileManager.hiddenDirectory = fileManager.makeHiddenFolder(HIDDEN_DIRECTORY)
 
-        sharedPrefsManager = SharedPrefsManager(this, encryptionManager)
+        sharedPrefsManager = SharedPrefsManager(this, fileEncryptionManager)
 
-        encryptionManager.secretKey = sharedPrefsManager.getSecretKey()
+        fileEncryptionManager.secretKey = sharedPrefsManager.getSecretKey()
 
         setupImageGallery()
     }
@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), BottomSheetImagePicker.OnImagesSelecte
         fileManager.hiddenDirectory?.let { directory ->
             imageGalleryAdapter = ImageGalleryAdapter(
                 this,
-                encryptionManager
+                fileEncryptionManager
             )
 
             getNewImages(directory)

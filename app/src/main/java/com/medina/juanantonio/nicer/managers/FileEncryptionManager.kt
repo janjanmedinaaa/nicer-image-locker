@@ -2,9 +2,9 @@ package com.medina.juanantonio.nicer.managers
 
 import android.annotation.SuppressLint
 import android.util.Base64
-import com.medina.juanantonio.nicer.managers.EncryptionManager.ENCRYPTION.ALGORITHM
-import com.medina.juanantonio.nicer.managers.EncryptionManager.ENCRYPTION.PROVIDER
-import com.medina.juanantonio.nicer.managers.EncryptionManager.ENCRYPTION.TRANSFORMATION
+import com.medina.juanantonio.nicer.managers.FileEncryptionManager.ENCRYPTION.ALGORITHM
+import com.medina.juanantonio.nicer.managers.FileEncryptionManager.ENCRYPTION.PROVIDER
+import com.medina.juanantonio.nicer.managers.FileEncryptionManager.ENCRYPTION.TRANSFORMATION
 import java.io.File
 import java.io.BufferedInputStream
 import java.io.FileInputStream
@@ -19,7 +19,7 @@ import javax.crypto.SecretKey
 import javax.crypto.spec.IvParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
-class EncryptionManager {
+class FileEncryptionManager {
     lateinit var secretKey: SecretKey
 
     object ENCRYPTION {

@@ -9,7 +9,7 @@ import javax.crypto.SecretKey
 @SuppressLint("CommitPrefEdits")
 class SharedPrefsManager(
     context: Context,
-    private val encryptionManager: EncryptionManager? = null
+    private val fileEncryptionManager: FileEncryptionManager? = null
 ) {
     private var sharedPrefs: SharedPreferences
     private var editor: SharedPreferences.Editor
@@ -32,7 +32,7 @@ class SharedPrefsManager(
         val key = sharedPrefs.getString(SECRET_KEY, null)
 
         if (key == null) {
-            val secretKey = encryptionManager?.generateSecretKey()
+            val secretKey = fileEncryptionManager?.generateSecretKey()
             saveSecretKey(secretKey!!)
             return secretKey
         }

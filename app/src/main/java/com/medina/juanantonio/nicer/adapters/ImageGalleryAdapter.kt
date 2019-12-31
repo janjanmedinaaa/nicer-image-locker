@@ -9,12 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.medina.juanantonio.nicer.R
 import com.medina.juanantonio.nicer.databinding.ImageGalleryItemLayoutBinding
-import com.medina.juanantonio.nicer.managers.EncryptionManager
+import com.medina.juanantonio.nicer.managers.FileEncryptionManager
 import com.medina.juanantonio.nicer.models.ImageGalleryItem
 
 class ImageGalleryAdapter(
     private val imageGalleryItemListener: ImageGalleryItemListener,
-    private val encryptionManager: EncryptionManager
+    private val fileEncryptionManager: FileEncryptionManager
 ) : RecyclerView.Adapter<ImageGalleryAdapter.ViewHolder>() {
     private val imageGalleryList = arrayListOf<ImageGalleryItem>()
 
@@ -70,7 +70,7 @@ class ImageGalleryAdapter(
                 }
 
                 Glide.with(binding.root.context)
-                    .load(encryptionManager.decryptFile(item.file))
+                    .load(fileEncryptionManager.decryptFile(item.file))
                     .into(this)
             }
         }

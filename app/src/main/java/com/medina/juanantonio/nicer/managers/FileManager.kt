@@ -11,7 +11,7 @@ import java.util.Date
 
 class FileManager(
     private val context: Context,
-    private val encryptionManager: EncryptionManager
+    private val fileEncryptionManager: FileEncryptionManager
 ) {
     var hiddenDirectory: String? = null
 
@@ -31,7 +31,7 @@ class FileManager(
         )
         val newFileLocation = "${hiddenFolder}/$newFileName"
 
-        encryptionManager.encryptFile(currentFile, newFileLocation)
+        fileEncryptionManager.encryptFile(currentFile, newFileLocation)
     }
 
     fun getFiles(directoryUri: String): ArrayList<String> {

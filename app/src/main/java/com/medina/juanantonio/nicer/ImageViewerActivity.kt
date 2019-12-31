@@ -10,14 +10,14 @@ import androidx.core.net.toUri
 import androidx.databinding.DataBindingUtil
 import com.medina.juanantonio.nicer.common.Constants.INTENTS.IMAGE
 import com.medina.juanantonio.nicer.databinding.ActivityImageViewerBinding
-import com.medina.juanantonio.nicer.managers.EncryptionManager
+import com.medina.juanantonio.nicer.managers.FileEncryptionManager
 import com.medina.juanantonio.nicer.managers.SharedPrefsManager
 import java.io.File
 
 class ImageViewerActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImageViewerBinding
     private lateinit var sharedPrefsManager: SharedPrefsManager
-    private val encryptionManager = EncryptionManager()
+    private val fileEncryptionManager = FileEncryptionManager()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,13 +27,13 @@ class ImageViewerActivity : AppCompatActivity() {
             R.layout.activity_image_viewer
         )
 
-        sharedPrefsManager = SharedPrefsManager(this, encryptionManager)
-        encryptionManager.secretKey = sharedPrefsManager.getSecretKey()
+        sharedPrefsManager = SharedPrefsManager(this, fileEncryptionManager)
+        fileEncryptionManager.secretKey = sharedPrefsManager.getSecretKey()
 
         val imagePath = intent.getStringExtra(IMAGE) ?: ""
         val encryptedImageFile = File(imagePath).toUri()
 
-        encryptionManager.decryptFile(encryptedImageFile.toFile()).let {
+        fileEncryptionManager.decryptFile(encryptedImageFile.toFile()).let {
             binding.photoViewer.setImageBitmap(
                 BitmapFactory.decodeByteArray(it, 0, it.size)
             )
